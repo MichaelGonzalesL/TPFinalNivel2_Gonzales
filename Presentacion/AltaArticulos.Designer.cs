@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblCodigo = new System.Windows.Forms.Label();
@@ -46,7 +47,9 @@
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.pbxAltaArticulos = new System.Windows.Forms.PictureBox();
             this.btnAgragarImagen = new System.Windows.Forms.Button();
+            this.ePvdrFiltro = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxAltaArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ePvdrFiltro)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -54,7 +57,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(183, 512);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(141, 62);
-            this.btnAceptar.TabIndex = 0;
+            this.btnAceptar.TabIndex = 8;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -64,7 +67,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(381, 512);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(141, 62);
-            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -137,21 +140,23 @@
             this.txtCodigo.Location = new System.Drawing.Point(290, 54);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(154, 22);
-            this.txtCodigo.TabIndex = 9;
+            this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(290, 111);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(154, 22);
-            this.txtNombre.TabIndex = 10;
+            this.txtNombre.TabIndex = 1;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(290, 162);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(154, 22);
-            this.txtDescripcion.TabIndex = 11;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // cboMarca
             // 
@@ -160,7 +165,7 @@
             this.cboMarca.Location = new System.Drawing.Point(290, 210);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(154, 24);
-            this.cboMarca.TabIndex = 12;
+            this.cboMarca.TabIndex = 3;
             // 
             // cboCategoria
             // 
@@ -169,14 +174,14 @@
             this.cboCategoria.Location = new System.Drawing.Point(290, 261);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(154, 24);
-            this.cboCategoria.TabIndex = 13;
+            this.cboCategoria.TabIndex = 4;
             // 
             // txtImagen
             // 
             this.txtImagen.Location = new System.Drawing.Point(290, 304);
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(153, 22);
-            this.txtImagen.TabIndex = 14;
+            this.txtImagen.TabIndex = 5;
             this.txtImagen.TextChanged += new System.EventHandler(this.txtImagen_TextChanged);
             // 
             // txtPrecio
@@ -184,7 +189,9 @@
             this.txtPrecio.Location = new System.Drawing.Point(290, 352);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(152, 22);
-            this.txtPrecio.TabIndex = 15;
+            this.txtPrecio.TabIndex = 7;
+            this.txtPrecio.TextChanged += new System.EventHandler(this.txtPrecio_TextChanged);
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // pbxAltaArticulos
             // 
@@ -202,9 +209,14 @@
             this.btnAgragarImagen.Location = new System.Drawing.Point(449, 302);
             this.btnAgragarImagen.Name = "btnAgragarImagen";
             this.btnAgragarImagen.Size = new System.Drawing.Size(31, 31);
-            this.btnAgragarImagen.TabIndex = 17;
+            this.btnAgragarImagen.TabIndex = 6;
             this.btnAgragarImagen.UseVisualStyleBackColor = true;
             this.btnAgragarImagen.Click += new System.EventHandler(this.btnAgragarImagen_Click);
+            // 
+            // ePvdrFiltro
+            // 
+            this.ePvdrFiltro.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ePvdrFiltro.ContainerControl = this;
             // 
             // AltaArticulos
             // 
@@ -233,6 +245,7 @@
             this.Text = "AltaArticulos";
             this.Load += new System.EventHandler(this.AltaArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxAltaArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ePvdrFiltro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,5 +271,6 @@
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.PictureBox pbxAltaArticulos;
         private System.Windows.Forms.Button btnAgragarImagen;
+        private System.Windows.Forms.ErrorProvider ePvdrFiltro;
     }
 }

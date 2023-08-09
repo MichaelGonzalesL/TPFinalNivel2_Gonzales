@@ -35,18 +35,14 @@ namespace Presentacion
 
         private void cargar()
         {
-            cboFiltro.SelectedIndex = 0;
             ArticulosNegocio negocio = new ArticulosNegocio();
             try
             {
                 listaArticulo = negocio.Listar();
                 dgvArticulos.DataSource = listaArticulo;
-
+                cboFiltro.SelectedIndex = 0;   
                 ocultarColumnas();
-                //dgvArticulos.Columns["Imagen"].Visible = false;
-                //dgvArticulos.Columns["Id"].Visible = true;
-                //dgvArticulos.Columns[0].HeaderText = "Codigo Articulo";
-
+                //dgvArticulos.Columns[0].HeaderText = "Codigo Articulo";    
             }
             catch (Exception ex)
             {
@@ -56,7 +52,7 @@ namespace Presentacion
    
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-        //    Articulos seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
+          //Articulos seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
           //  ayuda.cargarImagen(seleccionado.Imagen, pbxArticulos);
             if (dgvArticulos.CurrentRow != null)
             {
@@ -88,7 +84,6 @@ namespace Presentacion
             {
                 return true;
             }
-
             return false;
         }
 
@@ -121,7 +116,6 @@ namespace Presentacion
                 {
                     MessageBox.Show(ex.ToString());
                 }
-
             }
             else
             {
@@ -143,7 +137,7 @@ namespace Presentacion
             else
             {
                 MessageBox.Show("No hay registros para modicar");
-
+                
             }
         }
 
@@ -164,6 +158,7 @@ namespace Presentacion
                 dgvArticulos.DataSource = null;
                 dgvArticulos.DataSource = listaFiltrada;
                 ocultarColumnas();
+                
             }
             catch(Exception ex)
             {
@@ -173,29 +168,32 @@ namespace Presentacion
 
         private void cboFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Articulos> listaFiltrada=new List<Articulos>();
+            List<Articulos> listaNueva;
+            //string opcion = cboFiltro.SelectedItem.ToString();
             try
             {
-
                 if (cboFiltro.SelectedIndex == 1)
                 {
-                    listaFiltrada = listaArticulo.OrderByDescending(x => x.Precio).ToList();
+                    listaNueva = listaArticulo.OrderByDescending(x => x.Precio).ToList();
                 }
                 else if (cboFiltro.SelectedIndex == 2)
                 {
-
-                    listaFiltrada = listaArticulo.OrderBy(x => x.Precio).ToList();
+                    listaNueva = listaArticulo.OrderBy(x => x.Precio).ToList();
                 }
                 else
                 {
-                    listaFiltrada = listaArticulo;
+                    listaNueva = listaArticulo;
                 }
-                dgvArticulos.DataSource = null;
-                dgvArticulos.DataSource = listaFiltrada;
-                dgvArticulos.Columns["Id"].Visible = false;
-               // ocultarColumnas();
+                 dgvArticulos.DataSource = null;
+                 dgvArticulos.DataSource = listaNueva;
+                 ocultarColumnas();
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
+
+        
     }
 }

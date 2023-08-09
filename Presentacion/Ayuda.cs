@@ -32,6 +32,63 @@ namespace Presentacion
             //pbxArticulos.Load(listaArticulo[0].Imagen);
         }
 
+        ///FILTROS
+        ///
+       /* private void soloDecimal(KeyPressEventArgs e)
+        {
+
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+
+            }
+            else if (char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (e.KeyChar.ToString().Equals(".") && hayPunto())
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("solo numeros");
+            }
+            celdaVacia();
+        }
+
+        private void celdaVacia()
+        {
+            if (string.IsNullOrEmpty(txtPrecio.Text))
+            {
+                ePvdrFiltro.SetError(txtPrecio, "Requiere completar ");
+            }
+            else
+            {
+                ePvdrFiltro.Clear();
+            }
+        }
+        */
+        private bool hayPunto(string precio)
+        {
+            int hay = 0;
+            foreach (char caracter in precio)
+            {
+                if (caracter.ToString().Equals("."))
+                {
+                    hay++;
+                }
+            }
+
+            if (hay == 1) { return false; }
+            else { return true; }
+
+        }
 
     }
 }

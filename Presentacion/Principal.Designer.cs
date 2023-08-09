@@ -107,12 +107,12 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(35, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 16);
+            this.label1.Size = new System.Drawing.Size(169, 19);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Buscar por nombre :";
+            this.label1.Text = "BUSCAR POR NOMBRE :";
             // 
             // cboFiltro
             // 
@@ -127,7 +127,8 @@
             // lblOrdenar
             // 
             this.lblOrdenar.AutoSize = true;
-            this.lblOrdenar.Location = new System.Drawing.Point(705, 34);
+            this.lblOrdenar.BackColor = System.Drawing.Color.Transparent;
+            this.lblOrdenar.Location = new System.Drawing.Point(711, 37);
             this.lblOrdenar.Name = "lblOrdenar";
             this.lblOrdenar.Size = new System.Drawing.Size(113, 16);
             this.lblOrdenar.TabIndex = 8;
@@ -138,6 +139,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
+            this.BackgroundImage = global::Presentacion.Properties.Resources.istockphoto_939197692_170667a;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1484, 672);
             this.Controls.Add(this.lblOrdenar);

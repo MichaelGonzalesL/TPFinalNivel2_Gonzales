@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Dominio
-{
+{   
+    ///Marca
     public class Sello
     {
         public int Id { get; set; }
