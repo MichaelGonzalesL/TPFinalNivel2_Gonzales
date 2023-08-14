@@ -17,9 +17,11 @@ namespace Presentacion
     public partial class AltaArticulos : Form
     {
         private Articulos articulo = null;
-        Ayuda ayuda = new Ayuda();
         private OpenFileDialog archivo = null;
+        
+        private Ayuda ayuda = new Ayuda();
         private string direccion = @"C:\imagenes-articulos\";
+        
         public AltaArticulos()
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace Presentacion
             Close();
         }
 
-        private void AltaArticulos_Load(object sender, EventArgs e)//revisar
+        private void AltaArticulos_Load(object sender, EventArgs e)//
         {
             btnAceptar.Enabled = false;
             try
@@ -62,13 +64,9 @@ namespace Presentacion
                     ayuda.cargarImagen(articulo.Imagen, pbxAltaArticulos);
                     btnAceptar.Enabled = true;
                 }
-               /* celdaVacia(txtCodigo);
-                celdaVacia(txtNombre);
-                celdaVacia(txtPrecio);*/
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
 
@@ -118,81 +116,7 @@ namespace Presentacion
 
         }
        
-        /// FUNCIONES FILTRO /******************************************************************************
-        private bool hayPunto(string precio)
-        {
-            int hay = 0;
-            foreach (char caracter in precio)
-            {
-                if (caracter.ToString().Equals("."))
-                {
-                    hay++;
-                }
-            }
-
-            if (hay==1) { return false; }
-            else { return true; }
-            
-        } 
-        private void soloDecimal(KeyPressEventArgs e)
-        {
-
-            if (char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-
-            }
-            else if (char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if(e.KeyChar.ToString().Equals(".") && hayPunto(txtPrecio.Text))
-            {               
-                    e.Handled = false;             
-            }
-            else
-            {
-                e.Handled=true;
-                ePvdrFiltro.SetError(txtPrecio, "Solo numeros ");
-             
-            }
-           // celdaVacia(txtPrecio) ;
-        }
-
-        private bool celdaVacia(TextBox campo)
-        {
-            if (string.IsNullOrEmpty(campo.Text) || string.IsNullOrWhiteSpace(campo.Text))
-            {
-                ePvdrFiltro.SetError(campo,"Requiere completar ");
-                return true;
-            }
-            else { 
-                ePvdrFiltro.Clear();
-                return false;
-            }
-        } 
-
-        private void validacionCampos()
-        {
-            // btnAceptar.Enabled = true;
-            //if(celdaVacia(txtCodigo)/* && celdaVacia(txtNombre) && celdaVacia(txtPrecio)*/) { btnAceptar.Enabled = false; }
-            /*else if (celdaVacia(txtNombre)) { btnAceptar.Enabled = false; ; }
-            else if (celdaVacia(txtPrecio)) { btnAceptar.Enabled = false; ; }
-            else { btnAceptar.Enabled = true;}
-            */
-
-            if (string.IsNullOrEmpty(txtCodigo.Text)) { btnAceptar.Enabled = false; }
-            else if (string.IsNullOrEmpty(txtNombre.Text)) { btnAceptar.Enabled = false;}
-            else if (string.IsNullOrEmpty(txtPrecio.Text)) { btnAceptar.Enabled = false;}
-            else { btnAceptar.Enabled = true; }
-            /*var vr = !string.IsNullOrEmpty(txtCodigo.Text) && !string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtPrecio.Text); 
-            btnAceptar.Enabled = vr;*/
-        }
-        ///EVENTOS 
+        //EVENTOS 
         private void txtImagen_TextChanged(object sender, EventArgs e)
         {
             ayuda.cargarImagen(txtImagen.Text, pbxAltaArticulos);
@@ -219,24 +143,32 @@ namespace Presentacion
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            soloDecimal(e);
+            ayuda.soloDecimal(e,txtPrecio,ePvdrFiltro);
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
         {
-            celdaVacia(txtCodigo);
+            ayuda.celdaVacia(txtCodigo,ePvdrFiltro);
             validacionCampos();
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            celdaVacia(txtNombre);
+            ayuda.celdaVacia(txtNombre,ePvdrFiltro);
             validacionCampos();
         }
         private void txtPrecio_TextChanged(object sender, EventArgs e)
         {
-           celdaVacia(txtPrecio);
+           ayuda.celdaVacia(txtPrecio,ePvdrFiltro);
            validacionCampos();
+        }
+        //FUNCIONES FILTRO
+        private void validacionCampos()
+        {
+            if (string.IsNullOrEmpty(txtCodigo.Text)) { btnAceptar.Enabled = false; }
+            else if (string.IsNullOrEmpty(txtNombre.Text)) { btnAceptar.Enabled = false; }
+            else if (string.IsNullOrEmpty(txtPrecio.Text)) { btnAceptar.Enabled = false; }
+            else { btnAceptar.Enabled = true; }
         }
     }
 }

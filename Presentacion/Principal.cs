@@ -23,16 +23,13 @@ namespace Presentacion
         }
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            //ArticulosNegocio negocio = new ArticulosNegocio();
             //ayuda.Cargar(listaArticulo, pbxArticulos, dgvArticulos);
-
             cboFiltro.Items.Add("Predeterminado");
             cboFiltro.Items.Add("Mayor precio");
             cboFiltro.Items.Add("Menor precio");
             cargar();
             //cargarImagen(listaArticulo[0].Imagen);
-        }
-
+        } 
         private void cargar()
         {
             ArticulosNegocio negocio = new ArticulosNegocio();
@@ -52,42 +49,14 @@ namespace Presentacion
    
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-          //Articulos seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
-          //  ayuda.cargarImagen(seleccionado.Imagen, pbxArticulos);
             if (dgvArticulos.CurrentRow != null)
             {
                 Articulos seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
-                cargarImagen(seleccionado.Imagen);
+                ayuda.cargarImagen(seleccionado.Imagen, pbxArticulos);
             }
         }
-        private void cargarImagen(string seleccionado)
-        {
-            try
-            {
-                pbxArticulos.Load(seleccionado);
-            }
-            catch (Exception)
-            {
-                pbxArticulos.Load("https://static.vecteezy.com/system/resources/previews/005/337/799/non_2x/icon-image-not-found-free-vector.jpg"); ;
-            }
-        }
-
-        private void ocultarColumnas()
-        {
-                    dgvArticulos.Columns["Imagen"].Visible = false;
-                    dgvArticulos.Columns["Id"].Visible = false;
-        }
-
-        private bool grillaVacia()
-        {
-            if (dgvArticulos.CurrentRow != null)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        ///Eventos de los botones
+    
+    //EVENTOS DE LOS BOTONES
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             AltaArticulos alta = new AltaArticulos();
@@ -97,7 +66,7 @@ namespace Presentacion
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (grillaVacia())
+            if (ayuda.grillaVacia(dgvArticulos))
             {
                 Articulos seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
                 ArticulosNegocio negocio = new ArticulosNegocio();
@@ -110,7 +79,6 @@ namespace Presentacion
                         MessageBox.Show("Articulo eliminado exitosamente");
                         cargar();
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -122,11 +90,9 @@ namespace Presentacion
                 MessageBox.Show("No hay registros para eliminar");
             }
         }
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
-
-            if (grillaVacia())
+            if (ayuda.grillaVacia(dgvArticulos))
             {
                 Articulos seleccionado;
                 seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
@@ -136,8 +102,7 @@ namespace Presentacion
             }
             else
             {
-                MessageBox.Show("No hay registros para modicar");
-                
+                MessageBox.Show("No hay registros para modicar");  
             }
         }
 
@@ -192,6 +157,11 @@ namespace Presentacion
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        private void ocultarColumnas()
+        {
+            dgvArticulos.Columns["Imagen"].Visible = false;
+            dgvArticulos.Columns["Id"].Visible = false;
         }
 
         

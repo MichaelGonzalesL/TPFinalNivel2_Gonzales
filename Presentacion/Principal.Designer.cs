@@ -43,33 +43,36 @@
             // 
             // dgvArticulos
             // 
-            this.dgvArticulos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvArticulos.BackgroundColor = System.Drawing.Color.SteelBlue;
+            this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dgvArticulos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvArticulos.GridColor = System.Drawing.Color.Black;
             this.dgvArticulos.Location = new System.Drawing.Point(29, 81);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.RowHeadersWidth = 51;
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(1008, 375);
+            this.dgvArticulos.Size = new System.Drawing.Size(871, 333);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // pbxArticulos
             // 
-            this.pbxArticulos.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pbxArticulos.BackColor = System.Drawing.Color.Transparent;
             this.pbxArticulos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbxArticulos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbxArticulos.Location = new System.Drawing.Point(1078, 81);
+            this.pbxArticulos.Location = new System.Drawing.Point(933, 81);
             this.pbxArticulos.Name = "pbxArticulos";
-            this.pbxArticulos.Size = new System.Drawing.Size(352, 375);
+            this.pbxArticulos.Size = new System.Drawing.Size(352, 333);
             this.pbxArticulos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxArticulos.TabIndex = 1;
             this.pbxArticulos.TabStop = false;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(29, 561);
+            this.btnAgregar.Location = new System.Drawing.Point(35, 461);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(134, 64);
             this.btnAgregar.TabIndex = 2;
@@ -79,7 +82,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(193, 561);
+            this.btnEliminar.Location = new System.Drawing.Point(199, 461);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(134, 64);
             this.btnEliminar.TabIndex = 3;
@@ -89,7 +92,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(356, 561);
+            this.btnModificar.Location = new System.Drawing.Point(362, 461);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(134, 64);
             this.btnModificar.TabIndex = 4;
@@ -99,7 +102,7 @@
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(224, 31);
+            this.txtFiltro.Location = new System.Drawing.Point(255, 31);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(215, 22);
             this.txtFiltro.TabIndex = 5;
@@ -108,9 +111,11 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(35, 31);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(32, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 19);
+            this.label1.Size = new System.Drawing.Size(217, 19);
             this.label1.TabIndex = 6;
             this.label1.Text = "BUSCAR POR NOMBRE :";
             // 
@@ -118,7 +123,7 @@
             // 
             this.cboFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFiltro.FormattingEnabled = true;
-            this.cboFiltro.Location = new System.Drawing.Point(845, 31);
+            this.cboFiltro.Location = new System.Drawing.Point(708, 31);
             this.cboFiltro.Name = "cboFiltro";
             this.cboFiltro.Size = new System.Drawing.Size(192, 24);
             this.cboFiltro.TabIndex = 7;
@@ -126,11 +131,12 @@
             // 
             // lblOrdenar
             // 
-            this.lblOrdenar.AutoSize = true;
             this.lblOrdenar.BackColor = System.Drawing.Color.Transparent;
-            this.lblOrdenar.Location = new System.Drawing.Point(711, 37);
+            this.lblOrdenar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrdenar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblOrdenar.Location = new System.Drawing.Point(549, 34);
             this.lblOrdenar.Name = "lblOrdenar";
-            this.lblOrdenar.Size = new System.Drawing.Size(113, 16);
+            this.lblOrdenar.Size = new System.Drawing.Size(153, 21);
             this.lblOrdenar.TabIndex = 8;
             this.lblOrdenar.Text = "ORDENAR POR :";
             // 
@@ -141,7 +147,7 @@
             this.BackColor = System.Drawing.SystemColors.GrayText;
             this.BackgroundImage = global::Presentacion.Properties.Resources.istockphoto_939197692_170667a;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1484, 672);
+            this.ClientSize = new System.Drawing.Size(1337, 569);
             this.Controls.Add(this.lblOrdenar);
             this.Controls.Add(this.cboFiltro);
             this.Controls.Add(this.label1);
@@ -154,6 +160,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximumSize = new System.Drawing.Size(1502, 767);
             this.Name = "frmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  ";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();

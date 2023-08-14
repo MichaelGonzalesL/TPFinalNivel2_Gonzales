@@ -12,6 +12,7 @@ namespace Presentacion
 {
     public class Ayuda
     {
+
         public void cargarImagen(string seleccionado,PictureBox pbxArticulos)
         {
             try
@@ -24,17 +25,26 @@ namespace Presentacion
             }
         }
 
-        public void Cargar(List<Articulos> listaArticulo,DataGridView dgvArticulos)///Sacar el pbx.Ver si no afecta a otros llamados
+        public List<Articulos> Cargar(List<Articulos> listaArticulo,DataGridView dgvArticulos)///Sacar el pbx.Ver si no afecta a otros llamados
         {
             ArticulosNegocio negocio = new ArticulosNegocio();
             listaArticulo = negocio.Listar();
             dgvArticulos.DataSource = listaArticulo;
-            //pbxArticulos.Load(listaArticulo[0].Imagen);
+            return listaArticulo;
         }
 
-        ///FILTROS
-        ///
-       /* private void soloDecimal(KeyPressEventArgs e)
+        public bool grillaVacia(DataGridView grilla)
+        {
+            if (grilla.CurrentRow != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        //FILTROS
+        
+        public void soloDecimal(KeyPressEventArgs e,TextBox precio,ErrorProvider error)
         {
 
             if (char.IsDigit(e.KeyChar))
@@ -50,31 +60,32 @@ namespace Presentacion
             {
                 e.Handled = false;
             }
-            else if (e.KeyChar.ToString().Equals(".") && hayPunto())
+            else if (e.KeyChar.ToString().Equals(".") && hayPunto(precio.Text))
             {
                 e.Handled = false;
             }
             else
             {
                 e.Handled = true;
-                MessageBox.Show("solo numeros");
+                error.SetError(precio, "Solo numeros ");
             }
-            celdaVacia();
+            //celdaVacia();
         }
 
-        private void celdaVacia()
+        public bool celdaVacia(TextBox campo,ErrorProvider error)
         {
-            if (string.IsNullOrEmpty(txtPrecio.Text))
+            if (string.IsNullOrEmpty(campo.Text) || string.IsNullOrWhiteSpace(campo.Text))
             {
-                ePvdrFiltro.SetError(txtPrecio, "Requiere completar ");
+                error.SetError(campo, "Requiere completar ");
+                return true;
             }
             else
             {
-                ePvdrFiltro.Clear();
+                error.Clear();
+                return false;
             }
         }
-        */
-        private bool hayPunto(string precio)
+        public bool hayPunto(string precio)
         {
             int hay = 0;
             foreach (char caracter in precio)
